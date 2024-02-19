@@ -21,6 +21,7 @@ public class UserPairSharingExpense {
      public boolean isUserPairExactlySame(UserPairSharingExpense userPairSharingExpense){
           return userPairSharingExpense.getUserLendingExpense().equals(userLendingExpense) && userPairSharingExpense.getUserOwingExpense().equals(userOwingExpense);
      }
+     
      public boolean isUserPairExactReverse(UserPairSharingExpense userPairSharingExpense){
         return  userPairSharingExpense.getUserLendingExpense().equals(userOwingExpense) && userPairSharingExpense.getUserOwingExpense().equals(userLendingExpense);
      }
