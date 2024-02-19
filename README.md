@@ -1,5 +1,6 @@
 Splitwise is an `expense sharing application`.
 An expense sharing application is where user can add your expenses and split it among different people. The app keeps balances between people as in who owes how much to whom.
+
 <img width="541" alt="image" src="https://github.com/Shivangip285/Splitwise/assets/106912393/50feaf1e-b44b-4f0f-bd2a-18c1c68acd12">
 
 Application detail
