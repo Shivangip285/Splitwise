@@ -1,4 +1,4 @@
-package com.thoughtworks.expenseSharingApplication.splitwise.domainModel;
+package com.thoughtworks.splitwise.domainModel;
 
 import lombok.Builder;
 import lombok.Data;

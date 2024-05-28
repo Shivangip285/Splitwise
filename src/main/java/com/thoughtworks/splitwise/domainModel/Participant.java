@@ -1,14 +1,19 @@
-package com.thoughtworks.expenseSharingApplication.splitwise.domainModel;
+package com.thoughtworks.splitwise.domainModel;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 @Data
-@Builder
 public class Participant {
-    private String id;
-    private String name;
-    private String email;
+    public Participant(String userId, double amount) {
+        this.userId = userId;
+        this.amount = amount;
+    }
+
+    private String userId;
+
     private double amount;
-    private String role;
+    private double amountOwned;
+    public void setAmountOwned(double amount){
+        this.amountOwned=amount;
+    }
 }

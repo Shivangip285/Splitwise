@@ -3,11 +3,10 @@ package com.thoughtworks.splitwise.domainModel;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.List;
 @Data
 @Builder
-public class Event {
+public class User {
     private String id;
-    private List<ExpenseTransaction> expenseTransactions;
     private String name;
+    private String email;
 }
