@@ -9,6 +9,8 @@ import org.springframework.data.annotation.Id;
 import java.util.Currency;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Data
 @Builder
 public class ExpenseTransaction {
@@ -23,5 +25,12 @@ public class ExpenseTransaction {
     public void splitter(){
         double actualAmount=amount/participants.size();
         participants.forEach(participant -> {participant.setAmountOwned(actualAmount- participant.getAmount());});
+    }
+
+    public List<Participant> sortBorrowerParticipantsBasedOnOwnedAmount(){
+       return participants.stream().filter(x->x.getAmountOwned()>0).sorted((a, b) -> Double.compare(a.getAmountOwned(), b.getAmountOwned())).collect(Collectors.toList());
+    }
+    public List<Participant> sortLenderParticipantsBasedOnOwnedAmount(){
+        return participants.stream().filter(x->x.getAmountOwned()<0).sorted((a, b) -> Double.compare(a.getAmountOwned(), b.getAmountOwned())).collect(Collectors.toList());
     }
 }

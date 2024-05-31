@@ -14,6 +14,6 @@ public class Participant {
     private double amount;
     private double amountOwned;
     public void setAmountOwned(double amount){
-        this.amountOwned=amount;
+        this.amountOwned+=amount;
     }
 }
