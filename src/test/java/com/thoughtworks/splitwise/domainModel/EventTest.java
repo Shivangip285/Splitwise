@@ -8,8 +8,6 @@ import java.util.Currency;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class EventTest {
 @Test
     public void shouldSettleExpenseForAnEventBetweenParticipant(){
@@ -25,7 +23,7 @@ class EventTest {
         expenseTransactionList.add(expenseTransaction);
         expenseTransactionList.add(expenseTransaction1);
         Event event= Event.builder().id("abc").name("trip").expenseTransactions(expenseTransactionList).build();
-    System.out.println(event.settle().size());
-        event.settle().forEach(x-> System.out.println("abc"));
+    System.out.println(event.settleExpense().size());
+        event.settleExpense().forEach(x-> System.out.println("abc"));
     }
 }

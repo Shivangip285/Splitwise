@@ -22,7 +22,7 @@ public class ExpenseTransaction {
     private Currency currency;
     private List<Participant> participants;
 
-    public void splitter(){
+    public void splitExpense(){
         double actualAmount=amount/participants.size();
         participants.forEach(participant -> {participant.setAmountOwned(actualAmount- participant.getAmount());});
     }

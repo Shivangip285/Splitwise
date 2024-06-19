@@ -14,7 +14,7 @@ public class Event {
     private String id;
     private List<ExpenseTransaction> expenseTransactions;
     private String name;
-    public List<String> settle(){
+    public List<String> settleExpense(){
         List<String> settlementDetailList=new ArrayList<>();
         PriorityQueue<Participant> participants=new PriorityQueue<Participant>((a,b)->Double.compare(a.getAmountOwned(),b.getAmountOwned()));
         List<Participant> borrowerPaticipentsList = expenseTransactions.stream().map(x -> x.sortBorrowerParticipantsBasedOnOwnedAmount()).flatMap(x->x.stream()).collect(Collectors.toList());

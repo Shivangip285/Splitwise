@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.time.Instant;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ExpenseTransactionTest {
@@ -20,8 +19,8 @@ class ExpenseTransactionTest {
       ExpenseTransaction expenseTransaction=ExpenseTransaction.builder().amount(1500).currency((Currency) Currency.getAvailableCurrencies().toArray()[0]).date(Date.from(Instant.now())).participants(participants).build();
       ExpenseTransaction expenseTransaction1=ExpenseTransaction.builder().amount(1500).currency((Currency) Currency.getAvailableCurrencies().toArray()[0]).date(Date.from(Instant.now())).participants(participants).build();
 
-      expenseTransaction.splitter();
-      expenseTransaction1.splitter();
+      expenseTransaction.splitExpense();
+      expenseTransaction1.splitExpense();
 
       assertEquals(participant1.getAmountOwned(),-600);
       assertEquals(participant2.getAmountOwned(),0);
