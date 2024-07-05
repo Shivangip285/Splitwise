@@ -7,8 +7,8 @@ class ParticipantTest {
     @Test
    public void shouldSetAmountOwned(){
        Participant participant=new Participant("abc",500.5);
-       participant.setAmountOwned(299.5);
+       participant.setAmountOwed(299.5);
 
-        assertEquals(participant.getAmountOwned(),299.5);
+        assertEquals(participant.getAmountOwed(),299.5);
    }
 }

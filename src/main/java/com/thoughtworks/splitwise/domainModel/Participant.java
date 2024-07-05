@@ -4,16 +4,16 @@ import lombok.*;
 
 @Data
 public class Participant {
-    public Participant(String userId, double amount) {
+    public Participant(String userId, double amountPaid) {
         this.userId = userId;
-        this.amount = amount;
+        this.amountPaid = amountPaid;
     }
 
     private String userId;
 
-    private double amount;
-    private double amountOwned;
-    public void setAmountOwned(double amount){
-        this.amountOwned+=amount;
+    private double amountPaid;
+    private double amountOwed;
+    public void setAmountOwed(double amount){
+        this.amountOwed = amount;
     }
 }

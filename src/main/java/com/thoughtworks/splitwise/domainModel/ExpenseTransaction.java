@@ -23,14 +23,7 @@ public class ExpenseTransaction {
     private List<Participant> participants;
 
     public void splitExpense(){
-        double actualAmount=amount/participants.size();
-        participants.forEach(participant -> {participant.setAmountOwned(actualAmount- participant.getAmount());});
-    }
-
-    public List<Participant> sortBorrowerParticipantsBasedOnOwnedAmount(){
-       return participants.stream().filter(x->x.getAmountOwned()>0).sorted((a, b) -> Double.compare(a.getAmountOwned(), b.getAmountOwned())).collect(Collectors.toList());
-    }
-    public List<Participant> sortLenderParticipantsBasedOnOwnedAmount(){
-        return participants.stream().filter(x->x.getAmountOwned()<0).sorted((a, b) -> Double.compare(a.getAmountOwned(), b.getAmountOwned())).collect(Collectors.toList());
+        double actualAmount= amount /participants.size();
+        participants.forEach(participant -> {participant.setAmountOwed(participant.getAmountPaid()-actualAmount);});
     }
 }

@@ -22,8 +22,8 @@ class ExpenseTransactionTest {
       expenseTransaction.splitExpense();
       expenseTransaction1.splitExpense();
 
-      assertEquals(participant1.getAmountOwned(),-600);
-      assertEquals(participant2.getAmountOwned(),0);
-      assertEquals(participant3.getAmountOwned(),600);
+      assertEquals(participant1.getAmountOwed(),300);
+      assertEquals(participant2.getAmountOwed(),0);
+      assertEquals(participant3.getAmountOwed(),-300);
   }
 }
