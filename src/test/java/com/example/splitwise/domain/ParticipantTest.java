@@ -1,4 +1,4 @@
-package com.thoughtworks.splitwise.domainModel;
+package com.example.splitwise.domain;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

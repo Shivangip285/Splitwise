@@ -1,14 +1,12 @@
-package com.thoughtworks.splitwise.domainModel;
+package com.example.splitwise.domain;
 
 import lombok.Builder;
 import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Data
 @Builder

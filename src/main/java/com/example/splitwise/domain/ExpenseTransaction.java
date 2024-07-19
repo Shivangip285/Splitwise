@@ -1,4 +1,4 @@
-package com.thoughtworks.splitwise.domainModel;
+package com.example.splitwise.domain;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,7 +9,6 @@ import org.springframework.data.annotation.Id;
 import java.util.Currency;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Data
 @Builder

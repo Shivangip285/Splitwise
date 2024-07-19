@@ -1,10 +1,7 @@
-package com.thoughtworks.splitwise;
+package com.example.splitwise;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @SpringBootApplication
 public class SplitwiseApplication {

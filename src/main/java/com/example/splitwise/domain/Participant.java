@@ -1,4 +1,4 @@
-package com.thoughtworks.splitwise.domainModel;
+package com.example.splitwise.domain;
 
 import lombok.*;
 
