@@ -22,21 +22,21 @@ public class Event {
 
         expenseTransactions.stream().forEach(x -> {
             x.splitExpense();
-            x.getParticipants().forEach(y->{
-                boolean participantPresentInPrevTransectionEvent = participants.stream().anyMatch(p -> p.getUserId().equals(y.getUserId()));
-                if(participantPresentInPrevTransectionEvent){
+            x.getParticipants().forEach(y-> {
+                boolean participantPresentInPrevTransactionEvent = participants.stream().anyMatch(p -> p.getUserId().equals(y.getUserId()));
+                if(participantPresentInPrevTransactionEvent){
                 Participant participant1 = participants.stream().filter(p -> p.getUserId().equals(y.getUserId())).collect(Collectors.toList()).get(0);
                     Participant participant2=participant1;
                     participant2.setAmountOwed(participant1.getAmountOwed()+y.getAmountOwed());
                     participants.set(participants.indexOf(participant1),participant2 );
                 }
-                else{
+                else {
                     participants.add(y);
                 }
             });
         });
         splitParticipantListBasedInAmountOwned(participants,lenderParticipantsList,borrowerParticipantsList);
-        settlementDetailList=getExpenseSettleDetailsList(settlementDetailList,lenderParticipantsList,borrowerParticipantsList);
+        settlementDetailList = getExpenseSettleDetailsList(settlementDetailList,lenderParticipantsList,borrowerParticipantsList);
 
         settlementDetailList.forEach(x1-> System.out.println(x1));
 
