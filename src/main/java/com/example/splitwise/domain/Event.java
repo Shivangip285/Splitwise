@@ -21,7 +21,7 @@ public class Event {
         List<Participant> borrowerParticipantsList=new ArrayList<>();
 
         expenseTransactions.stream().forEach(x -> {
-            x.splitExpense();
+           // x.splitExpense();
             x.getParticipants().forEach(y-> {
                 boolean participantPresentInPrevTransactionEvent = participants.stream().anyMatch(p -> p.getUserId().equals(y.getUserId()));
                 if(participantPresentInPrevTransactionEvent){
