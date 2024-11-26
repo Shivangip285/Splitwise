@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.Instant;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -56,8 +57,9 @@ class ExpenseTransactionTest {
 
         assertEquals(expenseTransaction.getSettlements().size(),2);
         assertEquals(expenseTransaction.getSettlements().get(0).getPayeeUserId(),"abc");
-        assertEquals(expenseTransaction.getSettlements().get(0).getPayerUserId(),"nm");
-        assertEquals(expenseTransaction.getSettlements().get(0).getAmount(),100.0);
-        assertEquals(expenseTransaction.getSettlements().get(1).getAmount(),150.0);
+        assertEquals(expenseTransaction.getSettlements().get(0).getPayerUserId(),"ab");
+        assertEquals(expenseTransaction.getSettlements().get(1).getPayerUserId(),"nm");
+        assertEquals(expenseTransaction.getSettlements().get(0).getAmount(),150.0);
+        assertEquals(expenseTransaction.getSettlements().get(1).getAmount(),100.0);
     }
 }

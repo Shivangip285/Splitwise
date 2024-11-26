@@ -26,52 +26,50 @@ public class ExpenseTransaction {
 //        participants.forEach(participant -> participant.setAmountOwed(participant.getAmountPaid() - actualAmount));
 //    }
 
-public void split() {
-    double actualAmount = amount / participants.size();
-    List<Participant> payees = new ArrayList<>();
-    List<Participant> payers = new ArrayList<>();
+    public void split() {
+        double actualAmount = amount / participants.size();
 
-    participants.forEach(participant -> {
-        if (participant.getAmountPaid() > actualAmount) {
-            payees.add(participant);
-        } else {
-            payers.add(participant);
-        }
-    });
+        NavigableSet<Participant> sortedParticipants = new TreeSet<>((a, b) -> {
+            return Double.compare(a.getAmountPaid(), b.getAmountPaid());
+        });
 
-    expenseSettlement(payees, payers, actualAmount);
-}
+        participants.forEach(sortedParticipants::add);
 
-    private void expenseSettlement(List<Participant> payees, List<Participant> payers, double actualAmount) {
-        int payeeIndex = 0,payerIndex = 0;
-        while (payeeIndex < payees.size() && payerIndex < payers.size()) {
-            Participant payee = payees.get(payeeIndex);
-            Participant payer = payers.get(payerIndex);
+        settleExpenses(sortedParticipants, actualAmount);
+    }
 
-            performExpenseSettlement(payee, payer, actualAmount);
+    private void settleExpenses(NavigableSet<Participant> sortedParticipants, double actualAmount) {
+        while (!sortedParticipants.isEmpty()) {
+            Participant payer = sortedParticipants.pollLast();
+            while(payer.getAmountPaid()!=actualAmount){
+                Participant payee = sortedParticipants.pollFirst();
+                if(payer != null && payee != null && payee.getAmountPaid()==actualAmount){
+                    sortedParticipants.add(payer);
+                }
 
-            if (payee.getAmountPaid()== actualAmount) {
-                payeeIndex++;
+                performExpenseSettlement(payer,payee, actualAmount);
+
+                if (Double.compare(payee.getAmountPaid(), actualAmount) != 0) {
+                    sortedParticipants.add(payee);
+                }
             }
-            if (payer.getAmountPaid()== actualAmount) {
-                payerIndex++;
-            }
+
         }
     }
 
     private void performExpenseSettlement(Participant payee, Participant payer, double actualAmount) {
-    double payeeExcess = payee.getAmountPaid() - actualAmount;
-    double payerDeficit = actualAmount - payer.getAmountPaid();
-    double settlementAmount = Math.min(payeeExcess, payerDeficit);
+        double payeeExcess = payee.getAmountPaid() - actualAmount;
+        double payerDeficit = actualAmount - payer.getAmountPaid();
+        double settlementAmount = Math.min(payeeExcess, payerDeficit);
 
-    settlements.add(SettlementTransaction.builder()
-            .PayeeUserId(payee.getUserId())
-            .PayerUserId(payer.getUserId())
-            .amount(settlementAmount)
-            .build());
+        settlements.add(SettlementTransaction.builder()
+                .PayeeUserId(payee.getUserId())
+                .PayerUserId(payer.getUserId())
+                .amount(settlementAmount)
+                .build());
 
 
-    payee.setAmountPaid(payee.getAmountPaid() - settlementAmount);
-    payer.setAmountPaid(payer.getAmountPaid() + settlementAmount);
-}
+        payee.setAmountPaid(payee.getAmountPaid() - settlementAmount);
+        payer.setAmountPaid(payer.getAmountPaid() + settlementAmount);
+    }
 }
